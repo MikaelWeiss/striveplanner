@@ -1,0 +1,70 @@
+<!-- Navigation -->
+<nav class="bg-[#1a2b33] bg-opacity-90 shadow-lg px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <a href="/" class="flex items-center">
+          <img src={~p"/images/logo.png"} alt="Logo" class="h-8 w-8" />
+          <span class="ml-2 text-white font-medium">Strive</span>
+        </a>
+      </div>
+      <div class="hidden md:block">
+        <div class="flex items-center space-x-4">
+          <a href="/" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm">Home</a>
+          <a href="/features" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm">Features</a>
+          <a href="/pricing" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm">Pricing</a>
+          <a href="/contact" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm">Contact</a>
+          <a href="/login" class="bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 px-4 py-2 rounded-md text-sm font-medium hover:opacity-90">
+            Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main>
+  <div>
+    <.flash_group flash={@flash} />
+    <%= @inner_content %>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#1a2b33] text-gray-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="space-y-4">
+        <img src={~p"/images/logo.png"} alt="Logo" class="h-8 w-8" />
+        <p class="text-sm">Shape your life, one day at a time.</p>
+      </div>
+      <div>
+        <h3 class="text-white font-medium mb-4">Product</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/features" class="hover:text-white">Features</a></li>
+          <li><a href="/pricing" class="hover:text-white">Pricing</a></li>
+          <li><a href="/docs" class="hover:text-white">Documentation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-white font-medium mb-4">Company</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/about" class="hover:text-white">About</a></li>
+          <li><a href="/blog" class="hover:text-white">Blog</a></li>
+          <li><a href="/careers" class="hover:text-white">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-white font-medium mb-4">Legal</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/privacy" class="hover:text-white">Privacy</a></li>
+          <li><a href="/terms" class="hover:text-white">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
+      <p>&copy; 2024 Weiss Solutions LLC. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
