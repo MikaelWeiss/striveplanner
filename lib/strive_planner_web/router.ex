@@ -18,6 +18,8 @@ defmodule StrivePlannerWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/contact", PageController, :contact
+    post "/contact", PageController, :submit_contact
   end
 
   # Other scopes may use custom stacks.

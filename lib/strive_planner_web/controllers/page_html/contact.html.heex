@@ -1,0 +1,50 @@
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <div class="text-center mb-16">
+    <h1 class="text-4xl font-normal text-white mb-4">Contact Us</h1>
+    <p class="text-lg text-gray-300">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-12">
+    <!-- Contact Form -->
+    <div class="bg-white backdrop-blur-lg rounded-lg p-8">
+      <.simple_form for={@form} action={~p"/contact"} method="post" class="text-gray-300">
+        <.input field={@form[:name]} type="text" label="Name" required class="bg-white/5 text-white" />
+        <.input field={@form[:email]} type="email" label="Email" required class="bg-white/5 text-white" />
+        <.input field={@form[:subject]} type="text" label="Subject" required class="bg-white/5 text-white" />
+        <.input field={@form[:message]} type="textarea" label="Message" required class="bg-white/5 text-white" />
+        <:actions>
+          <.button class="w-full bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 hover:opacity-90">
+            Send Message
+          </.button>
+        </:actions>
+      </.simple_form>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="space-y-8">
+      <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8">
+        <h3 class="text-lg font-medium mb-4 text-[#40e0d0]">Get in Touch</h3>
+        <div class="space-y-4 text-gray-300">
+          <p>
+            <strong class="block text-white">Email:</strong>
+            <a href="mailto:contact@strive.com" class="hover:text-[#40e0d0]">contact@weisssolutions.org</a>
+          </p>
+          <p>
+            <strong class="block text-white">Response Time:</strong>
+            Typically within 24 hours
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8">
+        <h3 class="text-lg font-medium mb-4 text-[#40e0d0]">Follow Us</h3>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-300 hover:text-[#40e0d0]">X</a>
+          <a href="#" class="text-gray-300 hover:text-[#40e0d0]">Facebook</a>
+          <a href="#" class="text-gray-300 hover:text-[#40e0d0]">GitHub</a>
+          <a href="#" class="text-gray-300 hover:text-[#40e0d0]">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
