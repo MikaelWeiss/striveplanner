@@ -1,8 +1,8 @@
 defmodule StrivePlanner.Email do
   def contact_form_email(name, email, subject, message) do
     Resend.Emails.send(%{
-      from: "Strive Planner <support@striveplanner.org>",
-      to: "campingmikael@icloud.com",
+      from: "Strive Planner <no-reply@striveplanner.org>",
+      to: "mikaelweiss@striveplanner.org",
       subject: "Contact Form Submission: #{subject}",
       html: """
       <h2>New Contact Form Submission</h2>
