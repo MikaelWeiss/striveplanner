@@ -22,6 +22,7 @@ defmodule StrivePlannerWeb.Router do
     post "/contact", PageController, :submit_contact
     get "/support", PageController, :support
     get "/privacy", PageController, :privacy
+    get "/about", PageController, :about
   end
 
   # Other scopes may use custom stacks.

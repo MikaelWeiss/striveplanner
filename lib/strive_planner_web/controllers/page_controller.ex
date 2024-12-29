@@ -38,4 +38,8 @@ defmodule StrivePlannerWeb.PageController do
   def privacy(conn, _params) do
     render(conn, :privacy)
   end
+
+  def about(conn, _params) do
+    render(conn, :about)
+  end
 end
