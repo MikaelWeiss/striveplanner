@@ -1,7 +1,7 @@
 defmodule StrivePlannerWeb.PageController do
   use StrivePlannerWeb, :controller
   import Phoenix.Component
-  alias StrivePlanner.{Email, Mailer}
+  alias StrivePlanner.Email
 
   def home(conn, _params) do
     # The home page is often custom made,
@@ -18,14 +18,17 @@ defmodule StrivePlannerWeb.PageController do
         conn,
         %{"name" => name, "email" => email, "subject" => subject, "message" => message} = _params
       ) do
-    # Send the email
-    name
-    |> Email.contact_form_email(email, subject, message)
-    |> Mailer.deliver()
+    case Email.contact_form_email(name, email, subject, message) do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, "Thank you for your message! We'll get back to you soon.")
+        |> redirect(to: ~p"/contact")
 
-    conn
-    |> put_flash(:info, "Thank you for your message! We'll get back to you soon.")
-    |> redirect(to: ~p"/contact")
+      {:error, _} ->
+        conn
+        |> put_flash(:error, "Sorry, there was an error sending your message. Please try again.")
+        |> redirect(to: ~p"/contact")
+    end
   end
 
   def support(conn, _params) do

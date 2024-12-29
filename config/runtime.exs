@@ -114,4 +114,14 @@ if config_env() == :prod do
   #     config :swoosh, :api_client, Swoosh.ApiClient.Hackney
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
+
+  # Configure Resend
+  resend_api_key =
+    System.get_env("RESEND_API_KEY") ||
+      raise """
+      environment variable RESEND_API_KEY is missing.
+      Get it from your Resend dashboard at https://resend.com
+      """
+
+  config :resend, Resend.Client, api_key: resend_api_key
 end

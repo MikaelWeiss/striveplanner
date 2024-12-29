@@ -83,3 +83,6 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+# Configure Resend
+config :resend, Resend.Client, api_key: System.get_env("RESEND_API_KEY")
