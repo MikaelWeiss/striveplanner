@@ -1,6 +1,7 @@
 defmodule StrivePlannerWeb.PageController do
   use StrivePlannerWeb, :controller
   import Phoenix.Component
+  alias StrivePlanner.{Email, Mailer}
 
   def home(conn, _params) do
     # The home page is often custom made,
@@ -15,12 +16,19 @@ defmodule StrivePlannerWeb.PageController do
 
   def submit_contact(
         conn,
-        %{"name" => name, "email" => email, "subject" => subject, "message" => message} = params
+        %{"name" => name, "email" => email, "subject" => subject, "message" => message} = _params
       ) do
-    # Here you would typically send an email or store the contact form submission
-    # For now, we'll just redirect with a flash message
+    # Send the email
+    name
+    |> Email.contact_form_email(email, subject, message)
+    |> Mailer.deliver()
+
     conn
     |> put_flash(:info, "Thank you for your message! We'll get back to you soon.")
     |> redirect(to: ~p"/contact")
+  end
+
+  def support(conn, _params) do
+    render(conn, :support)
   end
 end
