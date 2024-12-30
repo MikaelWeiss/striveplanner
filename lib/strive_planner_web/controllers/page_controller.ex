@@ -42,4 +42,8 @@ defmodule StrivePlannerWeb.PageController do
   def about(conn, _params) do
     render(conn, :about)
   end
+
+  def terms_of_service(conn, _params) do
+    render(conn, :terms_of_service)
+  end
 end
