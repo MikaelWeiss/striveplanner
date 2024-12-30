@@ -1,18 +1,6 @@
-# StrivePlanner
+# Strive Planner
+Strive Planner is an iOS application designed to help users plan and achieve their goals effectively. The platform provides tools for goal setting, task management, and progress tracking, offering an intuitive and inspiring way to stay on top of personal and professional objectives.
+This website is built to help get the word out about the app.
 
-To start your Phoenix server:
-
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+## License
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
