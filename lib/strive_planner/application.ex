@@ -9,7 +9,6 @@ defmodule StrivePlanner.Application do
   def start(_type, _args) do
     children = [
       StrivePlannerWeb.Telemetry,
-      StrivePlanner.Repo,
       {DNSCluster, query: Application.get_env(:strive_planner, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: StrivePlanner.PubSub},
       # Start the Finch HTTP client for sending emails
