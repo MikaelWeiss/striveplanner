@@ -8,7 +8,6 @@
 import Config
 
 config :strive_planner,
-  ecto_repos: [StrivePlanner.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
