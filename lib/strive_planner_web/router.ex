@@ -24,6 +24,8 @@ defmodule StrivePlannerWeb.Router do
     get "/privacy", PageController, :privacy
     get "/about", PageController, :about
     get "/terms-of-service", PageController, :terms_of_service
+    get "/download", PageController, :coming_soon
+    post "/download", PageController, :submit_email
   end
 
   # Other scopes may use custom stacks.

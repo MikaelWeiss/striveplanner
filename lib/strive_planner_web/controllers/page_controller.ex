@@ -46,4 +46,30 @@ defmodule StrivePlannerWeb.PageController do
   def terms_of_service(conn, _params) do
     render(conn, :terms_of_service)
   end
+
+  def coming_soon(conn, _params) do
+    form = to_form(%{"email" => ""})
+    render(conn, :coming_soon, form: form)
+  end
+
+  def submit_email(conn, %{"email" => email}) do
+    # Send email to stay-updated@striveplanner.org
+    case Email.notify_about_ios_app(email) do
+      {:ok, _} ->
+        conn
+        |> put_flash(
+          :info,
+          "Thanks for your interest! We'll notify you when the iOS app launches."
+        )
+        |> redirect(to: ~p"/download")
+
+      {:error, _} ->
+        conn
+        |> put_flash(
+          :error,
+          "Sorry, there was an error processing your request. Please try again."
+        )
+        |> redirect(to: ~p"/download")
+    end
+  end
 end
