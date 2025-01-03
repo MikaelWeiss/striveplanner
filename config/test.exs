@@ -7,12 +7,6 @@ config :strive_planner, StrivePlannerWeb.Endpoint,
   secret_key_base: "BJu6Ys3dow+ydEQtpomQKWFA3WuabZApKqwkwgkemBHYsXde/gLMv1Y/rkp1sofd",
   server: false
 
-# In test we don't send emails
-config :strive_planner, StrivePlanner.Mailer, adapter: Swoosh.Adapters.Test
-
-# Disable swoosh api client as it is only required for production adapters
-config :swoosh, :api_client, false
-
 # Print only warnings and errors during test
 config :logger, level: :warning
 
@@ -22,3 +16,6 @@ config :phoenix, :plug_init_mode, :runtime
 # Enable helpful, but potentially expensive runtime checks
 config :phoenix_live_view,
   enable_expensive_runtime_checks: true
+
+# Configure Resend for testing
+config :resend, Resend.Client, api_key: "test_key"
