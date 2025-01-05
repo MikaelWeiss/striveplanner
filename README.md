@@ -7,10 +7,10 @@ This website is built to help get the word out about the app.
 This project is licensed under multiple licenses:
 
 ## Software License
-The software and associated documentation files (excluding images and videos) are licensed under the Apache License, Version 2.0. See (LICENSE)[LICENSE]
+The software and associated documentation files (excluding images and videos) are licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE)
 
 ## Media Assets License
-All images, videos, and other media assets contained in this repository are Copyright © 2025 Weiss Solutiosn LLC. All rights reserved. See (MEDIA_LICENSE)[MEDIA_LICENSE]
+All images, videos, and other media assets contained in this repository are Copyright © 2025 Weiss Solutiosn LLC. All rights reserved. See [MEDIA_LICENSE](MEDIA_LICENSE)
 
 These media files may not be reproduced, distributed, or used in any manner without explicit permission from the copyright holder.
 
