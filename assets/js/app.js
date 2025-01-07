@@ -42,3 +42,20 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+// Autoplay videos when they come into view
+const handleIntersection = (entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.play();
+    }
+  });
+};
+
+const observer = new IntersectionObserver(handleIntersection, {
+  threshold: 0.5
+});
+
+document.querySelectorAll('[data-js="autoplay-video"]').forEach(video => {
+  observer.observe(video);
+});
+

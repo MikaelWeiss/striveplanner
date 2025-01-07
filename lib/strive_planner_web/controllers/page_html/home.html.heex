@@ -44,6 +44,31 @@
     </div>
   </section>
 
+  <!-- App Demo Video -->
+  <section class="py-24 bg-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-normal text-white mb-4">See Strive in Action</h2>
+        <p class="text-gray-300 text-sm max-w-2xl mx-auto">Watch how Strive helps you plan your day, track your goals, and stay focused on what matters most.</p>
+      </div>
+      <div class="max-w-[300px] mx-auto aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden">
+        <video 
+          class="w-full h-full object-cover"
+          controls
+          autoplay
+          loop
+          muted
+          playsinline
+          data-js="autoplay-video"
+          poster={~p"/images/video-poster.png"}
+        >
+          <source src={~p"/videos/screen-recording.mp4"} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+
   <!-- Value Proposition -->
   <section class="py-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,11 +81,32 @@
             <li class="text-gray-300 text-sm">Regular reviews to keep you on track</li>
           </ul>
         </div>
-        <div class="mt-12 lg:mt-0">
-          <div class="bg-gradient-to-br from-[#40e0d0] to-[#3bd89d] p-0.5 rounded-2xl">
-            <div class="bg-[#1a2b33] rounded-2xl">
-              <img src="/images/app-preview.png" alt="Strive App Preview" class="w-full rounded-2xl"/>
-            </div>
+        
+        <!-- Screenshots Grid -->
+        <div class="mt-12 lg:mt-0 grid grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <img 
+              src={~p"/images/screenshots/1.png"} 
+              alt="Strive App Screenshot 1" 
+              class="rounded-2xl shadow-lg w-full"
+            />
+            <img 
+              src={~p"/images/screenshots/2.png"} 
+              alt="Strive App Screenshot 2" 
+              class="rounded-2xl shadow-lg w-full"
+            />
+          </div>
+          <div class="space-y-4 pt-8">
+            <img 
+              src={~p"/images/screenshots/3.png"} 
+              alt="Strive App Screenshot 3" 
+              class="rounded-2xl shadow-lg w-full"
+            />
+            <img 
+              src={~p"/images/screenshots/4.png"} 
+              alt="Strive App Screenshot 4" 
+              class="rounded-2xl shadow-lg w-full"
+            />
           </div>
         </div>
       </div>
