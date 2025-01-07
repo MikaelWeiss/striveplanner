@@ -21,7 +21,7 @@ defmodule StrivePlannerWeb.Router do
     get "/about", PageController, :about
     get "/privacy", PageController, :privacy
     get "/terms", PageController, :terms
-    get "/terms-of-service", PageController, :terms
+    get "/terms-of-service", PageController, :terms_of_service
     get "/contact", PageController, :contact
     get "/support", PageController, :support
     post "/contact", PageController, :submit_contact
