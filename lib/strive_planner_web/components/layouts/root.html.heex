@@ -13,9 +13,17 @@
     <link rel="icon" href={~p"/images/favicons/favicon.ico"} sizes="any">
     <link rel="icon" href={~p"/images/favicons/favicon.svg"} type="image/svg+xml">
     <link rel="apple-touch-icon" href={~p"/images/favicons/apple-touch-icon.png"}>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Strive Planner" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="https://unpkg.com/ios-pwa-splash@1.0.0/cdn.min.js"></script>
+    <script>iosPWASplash('/images/favicons/apple-touch-icon.png', '#DA2E60');</script>
     <link rel="manifest" href={~p"/images/favicons/site.webmanifest"}>
+    <meta name="theme-color" content="#DA2E60">
   </head>
-  <body class="bg-gradient-to-b from-[#1a2b33] to-black min-h-screen">
+  <body class="bg-gradient-to-b from-gray-900 to-black min-h-screen">
     <%= @inner_content %>
   </body>
 </html>
