@@ -27,6 +27,12 @@ defmodule StrivePlannerWeb.Router do
     post "/contact", PageController, :submit_contact
   end
 
+  scope "/api", StrivePlannerWeb do
+    pipe_through :api
+
+    get "/changelog", ChangelogController, :index
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", StrivePlannerWeb do
   #   pipe_through :api
