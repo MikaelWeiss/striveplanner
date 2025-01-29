@@ -4,6 +4,13 @@ defmodule StrivePlannerWeb.ChangelogController do
   def index(conn, _params) do
     changelog = [
       %{
+        version: "1.0.7",
+        date: "2025-01-29T00:00:00Z",
+        changes: [
+          %{type: "Added", description: "Added badge to settings for when there is a newer version"}
+        ]
+      },
+      %{
         version: "1.0.6",
         date: "2025-01-24T00:00:00Z",
         changes: [
