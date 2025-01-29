@@ -5,7 +5,7 @@ defmodule StrivePlannerWeb.ChangelogController do
     changelog = [
       %{
         version: "1.0.6",
-        date: "2025-01-24",
+        date: "2025-01-24T00:00:00Z",
         changes: [
           %{type: "Fixed", description: "Fixed some cosmetics"},
           %{type: "Added", description: "Added recurrence end"},
@@ -14,7 +14,7 @@ defmodule StrivePlannerWeb.ChangelogController do
       },
       %{
         version: "1.0.5",
-        date: "2025-01-22",
+        date: "2025-01-22T00:00:00Z",
         changes: [
           %{type: "Fixed", description: "Fixed drag and drop"},
           %{type: "Fixed", description: "Fixed some other bugs"}
@@ -22,7 +22,7 @@ defmodule StrivePlannerWeb.ChangelogController do
       },
       %{
         version: "1.0.4",
-        date: "2025-01-20",
+        date: "2025-01-20T00:00:00Z",
         changes: [
           %{type: "Fixed", description: "Lots of bug fixes"},
           %{type: "Changed", description: "Lots of UI improvements"}
@@ -30,14 +30,14 @@ defmodule StrivePlannerWeb.ChangelogController do
       },
       %{
         version: "1.0.3",
-        date: "2025-01-16",
+        date: "2025-01-16T00:00:00Z",
         changes: [
           %{type: "Changed", description: "Updated app icon"}
         ]
       },
       %{
         version: "1.0.2",
-        date: "2025-01-14",
+        date: "2025-01-14T00:00:00Z",
         changes: [
           %{type: "Added", description: "Added timelines for people"},
           %{type: "Added", description: "Can now add people to events"}
@@ -45,14 +45,14 @@ defmodule StrivePlannerWeb.ChangelogController do
       },
       %{
         version: "1.0.1",
-        date: "2025-01-07",
+        date: "2025-01-07T00:00:00Z",
         changes: [
           %{type: "Fixed", description: "Squashed some bugs"}
         ]
       },
       %{
         version: "1.0.0",
-        date: "2025-01-06",
+        date: "2025-01-06T00:00:00Z",
         changes: [
           %{type: "Added", description: "First release!"}
         ]
