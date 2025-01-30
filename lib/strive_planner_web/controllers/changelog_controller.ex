@@ -5,10 +5,12 @@ defmodule StrivePlannerWeb.ChangelogController do
     changelog = [
       %{
         version: "1.0.7",
-        date: "2025-01-29T00:00:00Z",
+        date: "2025-01-30T00:00:00Z",
         changes: [
           %{type: "Added", description: "Added badge to settings for when there is a newer version"},
-          %{type: "Added", description: "Added notifications"}
+          %{type: "Added", description: "Added notifications"},
+          %{type: "Added", description: "You can now add new event type while editing an event"},
+          %{type: "Added", description: "Added a date picker when you tap the date in the Calendar View"}
         ]
       },
       %{
