@@ -4,6 +4,18 @@ defmodule StrivePlannerWeb.ChangelogController do
   def index(conn, _params) do
     changelog = [
       %{
+        version: "1.0.8",
+        date: "2025-02-04T00:00:00Z",
+        changes: [
+          %{type: "Fixed", description: "Fixed some bugs"},
+          %{type: "Fixed", description: "Fixed bug where custom colors wasn't working for some users"},
+          %{type: "Added", description: "Added ability to call/text from in app"},
+          %{type: "Added", description: "Profile pictures for imported contacts now show"},
+          %{type: "Added", description: "When call/text and return to app, opens report contact"},
+          %{type: "Changed", description: "Improved search for people"}
+        ]
+      },
+      %{
         version: "1.0.7",
         date: "2025-01-30T00:00:00Z",
         changes: [
