@@ -20,5 +20,5 @@ defmodule StrivePlannerWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :strive_planner
+  use Gettext.Backend, otp_app: :strive_planner
 end

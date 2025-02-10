@@ -17,7 +17,7 @@ defmodule StrivePlannerWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import StrivePlannerWeb.Gettext
+  use Gettext, backend: StrivePlannerWeb.Gettext
 
   @doc """
   Renders a modal.

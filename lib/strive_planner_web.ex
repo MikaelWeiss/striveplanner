@@ -43,7 +43,7 @@ defmodule StrivePlannerWeb do
         layouts: [html: StrivePlannerWeb.Layouts]
 
       import Plug.Conn
-      import StrivePlannerWeb.Gettext
+      use Gettext, backend: StrivePlannerWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -85,7 +85,7 @@ defmodule StrivePlannerWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import StrivePlannerWeb.CoreComponents
-      import StrivePlannerWeb.Gettext
+      use Gettext, backend: StrivePlannerWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
