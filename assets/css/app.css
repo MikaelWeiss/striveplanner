@@ -3,11 +3,3 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
-
-/* Position reCAPTCHA badge */
-.grecaptcha-badge {
-  position: fixed !important;
-  bottom: 16px !important;
-  right: 16px !important;
-  z-index: 999;
-}

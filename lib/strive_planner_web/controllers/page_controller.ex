@@ -9,26 +9,9 @@ defmodule StrivePlannerWeb.PageController do
     render(conn, :home)
   end
 
-  def contact(conn, params) do
-    case conn.method do
-      "GET" ->
-        # For GET requests, just render the form
-        form = to_form(%{"name" => "", "email" => "", "subject" => "", "message" => ""})
-        render(conn, :contact, form: form)
-
-      "POST" ->
-        # For POST requests, verify recaptcha
-        case verify_recaptcha(params["g-recaptcha-response"]) do
-          {:ok, _score} ->
-            # Process the contact form submission
-            submit_contact(conn, params)
-
-          {:error, _reason} ->
-            conn
-            |> put_flash(:error, "Could not verify that you are human. Please try again.")
-            |> redirect(to: ~p"/contact")
-        end
-    end
+  def contact(conn, _params) do
+    form = to_form(%{"name" => "", "email" => "", "subject" => "", "message" => ""})
+    render(conn, :contact, form: form)
   end
 
   def submit_contact(
@@ -67,26 +50,5 @@ defmodule StrivePlannerWeb.PageController do
   def coming_soon(conn, _params) do
     form = to_form(%{"email" => ""})
     render(conn, :coming_soon, form: form)
-  end
-
-  defp verify_recaptcha(nil), do: {:error, "No reCAPTCHA token provided"}
-  defp verify_recaptcha(token) do
-    url = "https://www.google.com/recaptcha/api/siteverify"
-    secret_key = Application.get_env(:strive_planner, :recaptcha)[:secret_key]
-
-    case HTTPoison.post(url, {:form, [
-      secret: secret_key,
-      response: token
-    ]}) do
-      {:ok, %{status_code: 200, body: body}} ->
-        case Jason.decode(body) do
-          {:ok, %{"success" => true, "score" => score}} when score > 0.5 ->
-            {:ok, score}
-          _ ->
-            {:error, "reCAPTCHA verification failed"}
-        end
-      _ ->
-        {:error, "Could not verify reCAPTCHA"}
-    end
   end
 end

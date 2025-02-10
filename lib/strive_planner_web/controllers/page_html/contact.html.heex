@@ -12,11 +12,8 @@
         <.input field={@form[:email]} type="email" label="Email" required class="bg-white/5 text-white" />
         <.input field={@form[:subject]} type="text" label="Subject" required class="bg-white/5 text-white" />
         <.input field={@form[:message]} type="textarea" label="Message" required class="bg-white/5 text-white" />
-        <!-- Hidden input for recaptcha token -->
-        <input type="hidden" name="g-recaptcha-response" id="recaptcha-token"/>
         <:actions>
-          <.button class="w-full bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 hover:opacity-90" 
-            phx-hook="ReCaptcha">
+          <.button class="w-full bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 hover:opacity-90">
             Send Message
           </.button>
         </:actions>
@@ -50,13 +47,4 @@
       </div>
     </div>
   </div>
-</div>
-
-
-<!-- Add this script at the bottom of the file -->
-<script>
-  function onSubmit(token) {
-    document.getElementById("recaptcha-token").value = token;
-    document.getElementById("contact-form").submit();
-  }
-</script> 
+</div> 
