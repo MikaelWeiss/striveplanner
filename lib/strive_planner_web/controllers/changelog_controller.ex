@@ -4,6 +4,21 @@ defmodule StrivePlannerWeb.ChangelogController do
   def index(conn, _params) do
     changelog = [
       %{
+        version: "1.0.9",
+        date: "2025-02-18T00:00:00Z",
+        changes: [
+          %{type: "Fixed", description: "Fixed bug where dragging an event would sometimes make it show up on the next day"},
+          %{type: "Fixed", description: "Fixed bug where new events would sometimes end up on the next day"},
+          %{type: "Fixed", description: "Various bug fixes"},
+          %{type: "Added", description: "Added iCloud sync status to settings"},
+          %{type: "Added", description: "Added clock time picker"},
+          %{type: "Added", description: "Made it easier to select more than one person at a time when editing an event"},
+          %{type: "Added", description: "Made it easier to select more than one goal at a time when editing an event"},
+          %{type: "Added", description: "Added better details when viewing a person's timeline"},
+          %{type: "Changed", description: "Organized the settings a little more"}
+        ]
+      },
+      %{
         version: "1.0.8",
         date: "2025-02-04T00:00:00Z",
         changes: [
