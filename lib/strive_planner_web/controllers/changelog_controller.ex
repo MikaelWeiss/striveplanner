@@ -4,6 +4,13 @@ defmodule StrivePlannerWeb.ChangelogController do
   def index(conn, _params) do
     changelog = [
       %{
+        version: "1.0.10",
+        date: "2025-02-19T01:00:00Z",
+        changes: [
+          %{type: "Fixed", description: "Fixed flashing when swiping between days"}
+        ]
+      },
+      %{
         version: "1.0.9",
         date: "2025-02-18T15:45:00Z",
         changes: [
