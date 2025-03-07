@@ -51,4 +51,8 @@ defmodule StrivePlannerWeb.PageController do
     form = to_form(%{"email" => ""})
     render(conn, :coming_soon, form: form)
   end
+
+  def magic_link_failed(conn, _params) do
+    render(conn, :magic_link_failed)
+  end
 end

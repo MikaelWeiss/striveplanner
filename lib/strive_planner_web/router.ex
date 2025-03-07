@@ -25,6 +25,7 @@ defmodule StrivePlannerWeb.Router do
     get "/contact", PageController, :contact
     get "/support", PageController, :support
     post "/contact", PageController, :submit_contact
+    get "/auth/magic-link-failed", PageController, :magic_link_failed
   end
 
   scope "/api", StrivePlannerWeb do
