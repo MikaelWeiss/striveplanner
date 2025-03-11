@@ -4,6 +4,19 @@ defmodule StrivePlannerWeb.ChangelogController do
   def index(conn, _params) do
     changelog = [
       %{
+        version: "1.1.10",
+        date: "2024-03-11T14:22:00Z",
+        changes: [
+          %{type: "Fixed", description: "Fixed issue where events would look weird when there were multiple at the same time"},
+          %{type: "Fixed", description: "Fixed issue where events that span multiple days would disappear"},
+          %{type: "Changed", description: "BIG UI updates. Looks so much better!"},
+          %{type: "Added", description: "Drag indicator when dragging events"},
+          %{type: "Added", description: "Button to check of tasks in the calendar view"},
+          %{type: "Added", description: "Home view"},
+          %{type: "Added", description: "Added search for events"}
+        ]
+      },
+      %{
         version: "1.0.10",
         date: "2025-02-19T01:00:00Z",
         changes: [
