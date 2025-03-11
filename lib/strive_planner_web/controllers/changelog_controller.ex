@@ -5,7 +5,7 @@ defmodule StrivePlannerWeb.ChangelogController do
     changelog = [
       %{
         version: "1.1.10",
-        date: "2024-03-11T14:22:00Z",
+        date: "2025-03-11T14:22:00Z",
         changes: [
           %{type: "Fixed", description: "Fixed issue where events would look weird when there were multiple at the same time"},
           %{type: "Fixed", description: "Fixed issue where events that span multiple days would disappear"},
