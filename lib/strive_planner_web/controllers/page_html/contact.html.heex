@@ -7,18 +7,32 @@
   <div class="grid md:grid-cols-2 gap-12">
     <!-- Contact Form -->
     <div class="bg-white backdrop-blur-lg rounded-lg p-8">
-      <.simple_form for={@form} action={~p"/contact"} method="post" class="text-gray-300">
+      <.simple_form for={@form} action={~p"/contact"} method="post" class="text-gray-300" id="contact-form">
         <.input field={@form[:name]} type="text" label="Name" required class="bg-white/5 text-white" />
         <.input field={@form[:email]} type="email" label="Email" required class="bg-white/5 text-white" />
         <.input field={@form[:subject]} type="text" label="Subject" required class="bg-white/5 text-white" />
         <.input field={@form[:message]} type="textarea" label="Message" required class="bg-white/5 text-white" />
+        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" />
         <:actions>
-          <.button class="w-full bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 hover:opacity-90">
+          <.button type="submit" class="w-full bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 hover:opacity-90" onclick="submitForm(event)">
             Send Message
           </.button>
         </:actions>
       </.simple_form>
     </div>
+    
+    <script>
+      function submitForm(event) {
+        event.preventDefault();
+        
+        grecaptcha.ready(function() {
+          grecaptcha.execute('<%= Application.get_env(:recaptcha, :site_key) %>', {action: 'contact'}).then(function(token) {
+            document.getElementById('g-recaptcha-response').value = token;
+            document.getElementById('contact-form').submit();
+          });
+        });
+      }
+    </script>
 
     <!-- Contact Information -->
     <div class="space-y-8">

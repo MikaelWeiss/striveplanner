@@ -51,6 +51,12 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Configure reCAPTCHA
+config :recaptcha,
+  site_key: System.get_env("RECAPTCHA_SITE_KEY"),
+  secret: System.get_env("RECAPTCHA_SECRET_KEY"),
+  json_library: Jason
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

@@ -16,18 +16,40 @@ defmodule StrivePlannerWeb.PageController do
 
   def submit_contact(
         conn,
-        %{"name" => name, "email" => email, "subject" => subject, "message" => message} = _params
+        %{"name" => name, "email" => email, "subject" => subject, "message" => message, "g-recaptcha-response" => recaptcha_token} = _params
       ) do
-    case Email.contact_form_email(name, email, subject, message) do
-      {:ok, _} ->
+    case verify_recaptcha(recaptcha_token) do
+      {:ok, score} when score >= 0.5 ->
+        case Email.contact_form_email(name, email, subject, message) do
+          {:ok, _} ->
+            conn
+            |> put_flash(:info, "Thank you for your message! We'll get back to you soon.")
+            |> redirect(to: ~p"/contact")
+
+          {:error, _} ->
+            conn
+            |> put_flash(:error, "Sorry, there was an error sending your message. Please try again.")
+            |> redirect(to: ~p"/contact")
+        end
+
+      {:ok, _low_score} ->
         conn
-        |> put_flash(:info, "Thank you for your message! We'll get back to you soon.")
+        |> put_flash(:error, "Security verification failed. Please try again.")
         |> redirect(to: ~p"/contact")
 
       {:error, _} ->
         conn
-        |> put_flash(:error, "Sorry, there was an error sending your message. Please try again.")
+        |> put_flash(:error, "Security verification failed. Please try again.")
         |> redirect(to: ~p"/contact")
+    end
+  end
+
+  defp verify_recaptcha(token) do
+    case Recaptcha.verify(token) do
+      {:ok, %Recaptcha.Response{}} ->
+        {:ok, 1.0}
+      {:error, _} ->
+        {:error, :verification_failed}
     end
   end
 

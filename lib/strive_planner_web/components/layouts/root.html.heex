@@ -10,6 +10,7 @@
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
+    <script src={"https://www.google.com/recaptcha/api.js?render=#{Application.get_env(:recaptcha, :site_key)}"}></script>
     <link rel="icon" href={~p"/images/favicons/favicon.ico"} sizes="any">
     <link rel="icon" href={~p"/images/favicons/favicon.svg"} type="image/svg+xml">
     <link rel="apple-touch-icon" href={~p"/images/favicons/apple-touch-icon.png"}>
