@@ -56,8 +56,7 @@ defmodule StrivePlanner.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:resend, "~> 0.4.0"},
-      {:recaptcha, "~> 3.0"},
-      {:dotenv, "~> 3.0.0", only: [:dev, :test]}
+      {:recaptcha, "~> 3.0"}
     ]
   end
 

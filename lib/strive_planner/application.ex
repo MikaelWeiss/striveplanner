@@ -7,10 +7,6 @@ defmodule StrivePlanner.Application do
 
   @impl true
   def start(_type, _args) do
-    unless Mix.env() == :prod do
-      Dotenv.load()
-      Mix.Task.run("loadconfig")
-    end
     children = [
       StrivePlannerWeb.Telemetry,
       {DNSCluster, query: Application.get_env(:strive_planner, :dns_cluster_query) || :ignore},
