@@ -59,4 +59,24 @@ if config_env() == :prod do
       """
 
   config :resend, Resend.Client, api_key: resend_api_key
+
+  # Configure reCAPTCHA
+  recaptcha_site_key =
+    System.get_env("RECAPTCHA_SITE_KEY") ||
+      raise """
+      environment variable RECAPTCHA_SITE_KEY is missing.
+      Get it from your reCAPTCHA dashboard at https://www.google.com/recaptcha
+      """
+
+  recaptcha_secret_key =
+    System.get_env("RECAPTCHA_SECRET_KEY") ||
+      raise """
+      environment variable RECAPTCHA_SECRET_KEY is missing.
+      Get it from your reCAPTCHA dashboard at https://www.google.com/recaptcha
+      """
+
+  config :recaptcha,
+    site_key: recaptcha_site_key,
+    secret: recaptcha_secret_key,
+    json_library: Jason
 end
