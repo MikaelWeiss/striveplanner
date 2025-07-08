@@ -80,3 +80,4 @@ defmodule StrivePlanner.MixProject do
     ]
   end
 end
+
