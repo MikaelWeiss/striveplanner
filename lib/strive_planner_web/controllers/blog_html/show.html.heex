@@ -1,0 +1,65 @@
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <!-- Back to Blog Link -->
+  <div class="mb-8">
+    <a
+      href={~p"/blog"}
+      class="inline-flex items-center text-gray-400 hover:text-white transition-colors"
+    >
+      <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+        </path>
+      </svg>
+      Back to Blog
+    </a>
+  </div>
+  
+<!-- Article Header -->
+  <header class="mb-12">
+    <h1 class="text-4xl font-normal text-white mb-4 leading-tight">
+      {@post.title}
+    </h1>
+
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center mb-4 sm:mb-0">
+        <div class="text-sm text-gray-400">
+          By <span class="text-white">{@post.author}</span>
+          <span class="mx-2">•</span>
+          <time>{Calendar.strftime(@post.published_at, "%B %d, %Y")}</time>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        <%= for tag <- @post.tags do %>
+          <span class="px-3 py-1 text-xs bg-[#40e0d0]/20 text-[#40e0d0] rounded-full">
+            {tag}
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </header>
+  
+<!-- Article Content -->
+  <article class="prose prose-lg prose-invert max-w-none">
+    <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8">
+      {raw(@post.content)}
+    </div>
+  </article>
+  
+<!-- Article Footer -->
+  <footer class="mt-16 pt-8 border-t border-white/10">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+      <div class="mb-4 sm:mb-0">
+        <p class="text-gray-400 text-sm">
+          Published on {Calendar.strftime(@post.published_at, "%B %d, %Y")}
+        </p>
+      </div>
+
+      <div class="flex space-x-4">
+        <!-- Share buttons can be added here later -->
+        <button class="text-gray-400 hover:text-white transition-colors text-sm">
+          Share
+        </button>
+      </div>
+    </div>
+  </footer>
+</div>

@@ -23,9 +23,11 @@ defmodule StrivePlannerWeb.Router do
     get "/terms", PageController, :terms
     get "/terms-of-service", PageController, :terms_of_service
     get "/contact", PageController, :contact
-    get "/support", PageController, :support
     post "/contact", PageController, :submit_contact
+    get "/support", PageController, :support
     get "/auth/magic-link-failed", PageController, :magic_link_failed
+    get "/blog", BlogController, :index
+    get "/blog/:slug", BlogController, :show
   end
 
   scope "/api", StrivePlannerWeb do
