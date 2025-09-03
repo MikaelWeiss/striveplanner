@@ -1,65 +1,62 @@
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-  <!-- Back to Blog Link -->
-  <div class="mb-8">
-    <a
-      href={~p"/blog"}
-      class="inline-flex items-center text-gray-400 hover:text-white transition-colors"
+<article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+  <!-- Back to Blog -->
+  <div class="mb-12">
+    <a 
+      href={~p"/blog"} 
+      class="text-sm text-gray-500 hover:text-gray-300 transition-colors flex items-center gap-2"
     >
-      <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
-        </path>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
       </svg>
-      Back to Blog
+      Back to all posts
     </a>
   </div>
-  
-<!-- Article Header -->
+
+  <!-- Article Header -->
   <header class="mb-12">
-    <h1 class="text-4xl font-normal text-white mb-4 leading-tight">
+    <h1 class="text-4xl md:text-5xl font-light text-gray-100 leading-tight mb-6">
       {@post.title}
     </h1>
-
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-      <div class="flex items-center mb-4 sm:mb-0">
-        <div class="text-sm text-gray-400">
-          By <span class="text-white">{@post.author}</span>
-          <span class="mx-2">•</span>
-          <time>{Calendar.strftime(@post.published_at, "%B %d, %Y")}</time>
+    
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-gray-800">
+      <div class="flex items-center gap-4 text-sm">
+        <span class="text-gray-400">By</span>
+        <span class="text-gray-200 font-medium">{@post.author}</span>
+        <span class="text-gray-600">•</span>
+        <time class="text-gray-400">{Calendar.strftime(@post.published_at, "%B %d, %Y")}</time>
+      </div>
+      
+      <%= if length(@post.tags) > 0 do %>
+        <div class="flex flex-wrap gap-2">
+          <%= for tag <- @post.tags do %>
+            <span class="text-xs text-gray-500 px-2.5 py-1 bg-gray-900/50 rounded-full">
+              {tag}
+            </span>
+          <% end %>
         </div>
-      </div>
-
-      <div class="flex flex-wrap gap-2">
-        <%= for tag <- @post.tags do %>
-          <span class="px-3 py-1 text-xs bg-[#40e0d0]/20 text-[#40e0d0] rounded-full">
-            {tag}
-          </span>
-        <% end %>
-      </div>
+      <% end %>
     </div>
   </header>
-  
-<!-- Article Content -->
-  <article class="prose prose-lg prose-invert max-w-none">
-    <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8">
+
+  <!-- Article Content -->
+  <div class="prose prose-invert prose-lg max-w-none">
+    <div class="text-gray-300 leading-relaxed">
       {raw(@post.content)}
     </div>
-  </article>
-  
-<!-- Article Footer -->
-  <footer class="mt-16 pt-8 border-t border-white/10">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-      <div class="mb-4 sm:mb-0">
-        <p class="text-gray-400 text-sm">
-          Published on {Calendar.strftime(@post.published_at, "%B %d, %Y")}
-        </p>
-      </div>
+  </div>
 
-      <div class="flex space-x-4">
-        <!-- Share buttons can be added here later -->
-        <button class="text-gray-400 hover:text-white transition-colors text-sm">
-          Share
+  <!-- Article Footer -->
+  <footer class="mt-16 pt-8 border-t border-gray-800">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <p class="text-sm text-gray-500">
+        Published {Calendar.strftime(@post.published_at, "%B %d, %Y")}
+      </p>
+      
+      <div class="flex items-center gap-6 text-sm">
+        <button class="text-gray-500 hover:text-gray-300 transition-colors">
+          Share article
         </button>
       </div>
     </div>
   </footer>
-</div>
+</article>
