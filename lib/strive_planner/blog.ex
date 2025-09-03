@@ -18,69 +18,41 @@ defmodule StrivePlanner.Blog do
     [
       %Post{
         id: 1,
-        title: "How to Build Better Habits with Strive",
-        slug: "how-to-build-better-habits-with-strive",
+        title: "Where there is no vision, the people perish",
+        slug: "where-there-is-no-vision-the-people-perish",
         excerpt:
-          "Discover how Strive's intelligent planning helps you create lasting habits that stick.",
+          "A personal reflection on the importance of vision in goal setting and how it transforms our approach to achieving what matters most.",
         content: """
-        <p>Building better habits is one of the most powerful ways to transform your life. With Strive's intelligent planning system, you can create habits that actually stick.</p>
-
-        <h2>Why Most Habits Fail</h2>
-        <p>Traditional habit formation often fails because it doesn't account for your actual schedule and priorities. Strive changes this by integrating habit formation into your daily planning.</p>
-
-        <h2>Strive's Approach to Habit Building</h2>
-        <p>Our app uses intelligent scheduling to place your habits at optimal times in your day, ensuring they're more likely to become automatic behaviors.</p>
-
-        <h2>Getting Started</h2>
-        <p>Start small with one or two habits, and let Strive help you build momentum over time.</p>
+        <h2>Hello world</h2>
+        <p>I have a confession to make. This is my first ever blog post. And to be honest, I've not really been a heavy blog post consumer myself, so I'm not entirely sure what one is supposed to even look like.</p>
+        <p>That said, I do know something that's totally changed the way I look at setting and working towards goals.</p>
+        <h2>"Where there is no vision, the people perish"</h2>
+        <p>This originally comes from Proverbs 29:18 KJV. I first heard this phrase while serving as a missionary for my church, but it's kept with me even after coming home from my mission. In order to illustrate, let me show you why this matters for anyone who's ever started something and not finished for whatever reason. I'll first explain how I've understood the phrase; second, how it's helped me; and third, how it can help you.</p>
+        <h2>Cool, but what does it <em>mean??</em></h2>
+        <p>Have you ever done something (like learn piano) and liked it to start off with, but after hours of practice and what feels like no improvement, wonder why you started to learn in the first place?</p>
+        <h3>Let's compare and contrast:</h3>
+        <p><strong>Goal:</strong> I want to be able to play the piano.<br>
+        <strong>Plan:</strong> I'll play every day for 30 minutes.<br>
+        <strong>Schedule:</strong> I'll play at 9am when I wake up.</p>
+        <p>How long do you think it'll be before you start to skip "just one day"? And then another... And another... Until eventually you realize that it's been a couple months since you last played the piano and you still haven't gotten anywhere near your "goal" of being able to "play the piano" whatever that means...</p>
+        <p>Now let's bring a vision into the mix.</p>
+        <p>First, what do I mean by vision? Instead of just saying something you want to <strong>do</strong> explain the <strong>vision</strong>. How would you feel? What would you see? Hear? Smell? Make the dream vivid. Make it something so real that you could almost reach out and grab it.</p>
+        <p>For example. It was an early winter morning. Cloudy and a little gloomy. I sat down at the piano and began to play a soft calm melody. I started to hear my kids stirring in their rooms their day greeted by the warm song I now played. I kept playing, the song growing a little faster, a little brighter. I could almost <em>feel</em> rays of sun on my hands as they glided across the keys. There was no longer me and the keyboard, it felt as if we had melded into one. My emotions seemed to seep out through the keys. The melody sped up, the tune even brighter. I finished my song and looked away from the piano. Only then did I realize that it was still gloomy outside. And yet, it still felt just a little bit brighter.</p>
+        <p>Whoa. Big difference. Now, imagine that each morning you wake up with that vision in mind. If you can do your best to keep that vision with you as you learn, why would you ever miss a day?? I wouldn't!</p>
+        <p>Let's do another one: I imagine that I'm playing with my nephew and we're playing tag. He's 12 at this point, so he's pretty quick. But I'm quicker. I run around the park, up the stairs, around the chairs. All without breaking a sweat. Sorry (insert name of nephew here) you're not winning today....</p>
+        <p>I mean, I don't know about you, but I'm pretty competitive. That would definitely motivate me to exercise 😂</p>
+        <h3>Strive</h3>
+        <p><img src="/images/blog1image1.png" alt="Goal setting in Strive" class="rounded-lg shadow-lg mx-auto block max-w-md"></p>
+        <p>I think Strive is a great place to put these visions. Then whenever you start working on it, you can go look at what you wrote out.</p>
+        <h3>In conclusion</h3>
+        <p>When you spend a little extra time to understand <strong><em>why</em></strong> instead of just <strong><em>what</em></strong> you want to accomplish, then you'll go further then you ever thought you could. Or, in short, "Without a vision, the people perish".</p>
+        <p>Thanks for reading!</p>
+        <h3>Notes</h3>
+        <p>This blog was 100% written by me. I may use AI to help me make an outline or to critique my writing to help me improve it, but I'll never use AI to actually write my content.</p>
         """,
-        published_at: ~D[2024-09-01],
-        author: "Strive Team",
-        tags: ["habits", "productivity", "planning"]
-      },
-      %Post{
-        id: 2,
-        title: "The Science of Goal Achievement",
-        slug: "the-science-of-goal-achievement",
-        excerpt:
-          "Learn about the psychological principles behind successful goal setting and how Strive incorporates them.",
-        content: """
-        <p>Goal achievement isn't just about hard work—it's about understanding the science behind motivation and behavior change.</p>
-
-        <h2>The Psychology of Goals</h2>
-        <p>Research shows that specific, measurable goals are more likely to be achieved than vague aspirations.</p>
-
-        <h2>Breaking Down Big Goals</h2>
-        <p>Strive helps you break large goals into manageable daily actions, making success more achievable.</p>
-
-        <h2>Staying Motivated</h2>
-        <p>Regular progress tracking and reflection keep you motivated and on track toward your goals.</p>
-        """,
-        published_at: ~D[2024-08-15],
-        author: "Strive Team",
-        tags: ["goals", "psychology", "motivation"]
-      },
-      %Post{
-        id: 3,
-        title: "Time Management in the Digital Age",
-        slug: "time-management-in-the-digital-age",
-        excerpt:
-          "Navigate the challenges of digital distractions and learn to manage your time more effectively.",
-        content: """
-        <p>In our hyper-connected world, effective time management has never been more challenging—or more important.</p>
-
-        <h2>The Digital Distraction Problem</h2>
-        <p>Constant notifications and endless scrolling can derail even the best intentions.</p>
-
-        <h2>Strive's Solution</h2>
-        <p>Our app helps you create focused time blocks and minimize distractions during important work periods.</p>
-
-        <h2>Practical Strategies</h2>
-        <p>Learn techniques for batching similar tasks, setting boundaries, and maintaining focus in a distracted world.</p>
-        """,
-        published_at: ~D[2024-07-30],
-        author: "Strive Team",
-        tags: ["time-management", "focus", "productivity"]
+        published_at: ~D[2025-09-03],
+        author: "Mikael Weiss",
+        tags: ["goals", "vision", "motivation", "productivity", "personal-growth"]
       }
     ]
   end
