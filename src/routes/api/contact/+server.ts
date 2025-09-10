@@ -60,7 +60,7 @@ export async function POST({ request }) {
     // Send email using Resend
     const resend = new Resend(env.VITE_RESEND_API_KEY);
     const { data: emailData, error } = await resend.emails.send({
-      from: 'Strive Planner Contact <onboarding@resend.dev>',
+      from: 'Strive Planner Contact Form <noreply@striveplanner.org>',
       to: 'support@striveplanner.org',
       replyTo: email as string,
       subject: `Contact Form: ${subject}`,
