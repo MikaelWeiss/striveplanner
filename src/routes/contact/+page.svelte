@@ -1,26 +1,70 @@
 <script lang="ts">
+  // Declare grecaptcha for TypeScript
+  declare global {
+    interface Window {
+      grecaptcha: {
+        ready: (callback: () => void) => void;
+        execute: (siteKey: string, options: { action: string }) => Promise<string>;
+      };
+    }
+  }
+
   let name = $state('');
   let email = $state('');
   let subject = $state('');
   let message = $state('');
   let isSubmitting = $state(false);
   let formMessage = $state<{ type: 'success' | 'error'; text: string } | null>(null);
+  let recaptchaReady = $state(false);
+
+  // Wait for reCAPTCHA to load
+  function waitForRecaptcha(): Promise<void> {
+    return new Promise((resolve) => {
+      if (typeof window !== 'undefined' && window.grecaptcha) {
+        window.grecaptcha.ready(() => {
+          recaptchaReady = true;
+          resolve();
+        });
+      } else {
+        // Poll for grecaptcha to be available
+        const checkRecaptcha = () => {
+          if (typeof window !== 'undefined' && window.grecaptcha) {
+            window.grecaptcha.ready(() => {
+              recaptchaReady = true;
+              resolve();
+            });
+          } else {
+            setTimeout(checkRecaptcha, 100);
+          }
+        };
+        checkRecaptcha();
+      }
+    });
+  }
+
+  // Initialize reCAPTCHA when component mounts
+  $effect(() => {
+    waitForRecaptcha();
+  });
 
   async function submitForm() {
     isSubmitting = true;
     formMessage = null;
 
     try {
+      // Ensure reCAPTCHA is ready
+      if (!recaptchaReady) {
+        await waitForRecaptcha();
+      }
+
       // Generate reCAPTCHA token
       const recaptchaToken = await new Promise<string>((resolve, reject) => {
-        if (typeof grecaptcha !== 'undefined') {
-          grecaptcha.ready(() => {
-            grecaptcha.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY, { action: 'submit' })
-              .then(resolve)
-              .catch(reject);
-          });
+        if (typeof window !== 'undefined' && window.grecaptcha) {
+          window.grecaptcha.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY, { action: 'submit' })
+            .then(resolve)
+            .catch(reject);
         } else {
-          reject(new Error('reCAPTCHA not loaded'));
+          reject(new Error('reCAPTCHA not available'));
         }
       });
 
@@ -60,6 +104,7 @@
 <svelte:head>
   <title>Contact Us - Strive Planner</title>
   <meta name="description" content="Get in touch with the Strive Planner team. We'd love to hear from you!" />
+  <script src="https://www.google.com/recaptcha/api.js?render={import.meta.env.VITE_RECAPTCHA_SITE_KEY}"></script>
 </svelte:head>
 
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
