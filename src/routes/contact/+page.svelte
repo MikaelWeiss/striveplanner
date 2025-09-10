@@ -13,7 +13,22 @@
     try {
       // Here you would implement reCAPTCHA and form submission
       // For now, just show a success message
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('subject', subject);
+      formData.append('message', message);
+      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+      
+      const result = await response.json();
       formMessage = { type: 'success', text: 'Thank you for your message! We\'ll get back to you soon.' };
       
       // Reset form
