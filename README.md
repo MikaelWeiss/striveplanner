@@ -1,23 +1,38 @@
-# Strive Planner
-Strive Planner is an iOS application designed to help users plan and achieve their goals effectively. The platform provides tools for goal setting, task management, and progress tracking, offering an intuitive and inspiring way to stay on top of personal and professional objectives.
-This website is built to help get the word out about the app.
+# sv
 
-# License
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-This project is licensed under multiple licenses:
+## Creating a project
 
-## Software License
-The software and associated documentation files (excluding images and videos) are licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE)
+If you're seeing this, you've probably already done this step. Congrats!
 
-## Media Assets License
-All images, videos, and other media assets contained in this repository are Copyright © 2025 Weiss Solutiosn LLC. All rights reserved. See [MEDIA_LICENSE](MEDIA_LICENSE)
+```sh
+# create a new project in the current directory
+npx sv create
 
-These media files may not be reproduced, distributed, or used in any manner without explicit permission from the copyright holder.
+# create a new project in my-app
+npx sv create my-app
+```
 
-### Media Assets Include:
-- All files in the `/images` directory
-- All files in the `/videos` directory
-- Any other media files located throughout the project
+## Developing
 
-## Questions
-For licensing questions or permission requests regarding media assets, please contact mikaelweiss@weisssolutions.org.
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```sh
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```sh
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
