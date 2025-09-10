@@ -59,7 +59,6 @@
           loop
           muted
           playsinline
-          poster="/images/video-poster.png"
         >
           <source src="/videos/screen-recording.mp4" type="video/mp4" />
           Your browser does not support the video tag.
