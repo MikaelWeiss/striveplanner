@@ -1,0 +1,55 @@
+<svelte:head>
+  <title>Support - Strive Planner</title>
+  <meta name="description" content="Find answers to common questions or get in touch with our support team." />
+</svelte:head>
+
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <div class="text-center mb-16">
+    <h1 class="text-4xl font-normal text-white mb-4">Support Center</h1>
+    <p class="text-lg text-gray-300">Find answers to common questions or get in touch with our support team.</p>
+  </div>
+
+  <!-- Quick Support Options -->
+  <div class="grid md:grid-cols-2 gap-8 mb-16">
+    <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8">
+      <h3 class="text-lg font-medium mb-4 text-[#40e0d0]">Email Support</h3>
+      <p class="text-gray-300 mb-4">Get help from our support team via email.</p>
+      <a href="mailto:support@striveplanner.org" class="inline-block text-sm text-[#40e0d0] hover:text-white">
+        support@striveplanner.org
+      </a>
+    </div>
+  </div>
+
+  <!-- FAQs -->
+  <div class="space-y-8">
+    <h2 class="text-2xl font-normal text-white mb-8">Frequently Asked Questions</h2>
+    
+    <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8">
+      <h3 class="text-lg font-medium mb-3 text-[#40e0d0]">How do I get started with Strive?</h3>
+      <p class="text-gray-300">Download the app from the App Store and follow the onboarding process. We'll guide you through setting up your first goals and daily routines.</p>
+    </div>
+
+    <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8">
+      <h3 class="text-lg font-medium mb-3 text-[#40e0d0]">Can I sync my data across devices?</h3>
+      <p class="text-gray-300">Yes! Strive automatically syncs your data across all your devices using iCloud.</p>
+    </div>
+
+    <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8">
+      <h3 class="text-lg font-medium mb-3 text-[#40e0d0]">How do I reset my password?</h3>
+      <p class="text-gray-300">Click the "Forgot Password" link on the login screen. We'll send you an email with instructions to reset your password.</p>
+    </div>
+
+    <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8">
+      <h3 class="text-lg font-medium mb-3 text-[#40e0d0]">Is my data secure?</h3>
+      <p class="text-gray-300">Yes, we take security seriously. All your data is stored securely on iCloud. We do not have access to your data.</p>
+    </div>
+  </div>
+
+  <!-- Contact Form CTA -->
+  <div class="mt-16 text-center">
+    <p class="text-gray-300 mb-4">Can't find what you're looking for?</p>
+    <a href="/contact" class="inline-block px-8 py-3 text-sm font-medium rounded-md bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 hover:opacity-90">
+      Contact Support
+    </a>
+  </div>
+</div>
