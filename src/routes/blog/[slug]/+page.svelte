@@ -36,6 +36,19 @@
 </svelte:head>
 
 <article class="mx-auto max-w-4xl px-4 py-24 sm:px-6 lg:px-8">
+	<!-- Back to Blog -->
+	<div class="mb-8">
+		<a
+			href="/blog"
+			class="inline-flex items-center text-[#40e0d0] transition-colors hover:text-[#3bd89d]"
+		>
+			<svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+			</svg>
+			Back to Blog
+		</a>
+	</div>
+
 	<!-- Header -->
 	<header class="mb-12">
 		<h1 class="mb-4 text-4xl font-normal text-white">{data.post.title}</h1>
@@ -79,4 +92,5 @@
 			Back to Blog
 		</a>
 	</div>
-</article>
+
+	</article>
