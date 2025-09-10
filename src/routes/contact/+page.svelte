@@ -1,13 +1,11 @@
 <script lang="ts">
-  // Declare grecaptcha for TypeScript
-  declare global {
-    interface Window {
-      grecaptcha: {
-        ready: (callback: () => void) => void;
-        execute: (siteKey: string, options: { action: string }) => Promise<string>;
-      };
-    }
+  import type { PageData } from './$types';
+
+  interface Props {
+    data: PageData;
   }
+  
+  let { data }: Props = $props();
 
   let name = $state('');
   let email = $state('');
@@ -47,7 +45,8 @@
     waitForRecaptcha();
   });
 
-  async function submitForm() {
+  async function submitForm(event: SubmitEvent) {
+    event.preventDefault();
     isSubmitting = true;
     formMessage = null;
 
@@ -60,7 +59,7 @@
       // Generate reCAPTCHA token
       const recaptchaToken = await new Promise<string>((resolve, reject) => {
         if (typeof window !== 'undefined' && window.grecaptcha) {
-          window.grecaptcha.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY, { action: 'submit' })
+          window.grecaptcha.execute(data.recaptchaSiteKey, { action: 'submit' })
             .then(resolve)
             .catch(reject);
         } else {
@@ -104,7 +103,7 @@
 <svelte:head>
   <title>Contact Us - Strive Planner</title>
   <meta name="description" content="Get in touch with the Strive Planner team. We'd love to hear from you!" />
-  <script src="https://www.google.com/recaptcha/api.js?render={import.meta.env.VITE_RECAPTCHA_SITE_KEY}"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render={data.recaptchaSiteKey}"></script>
 </svelte:head>
 
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -122,7 +121,7 @@
   <div class="grid md:grid-cols-2 gap-12">
     <!-- Contact Form -->
     <div class="bg-white backdrop-blur-lg rounded-lg p-8">
-      <form on:submit|preventDefault={submitForm} class="text-gray-800" id="contact-form">
+      <form onsubmit={submitForm} class="text-gray-800" id="contact-form">
         <div class="mb-4">
           <label for="name" class="block text-sm font-medium text-gray-800 mb-2">Name *</label>
           <input 

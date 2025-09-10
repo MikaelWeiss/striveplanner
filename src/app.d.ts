@@ -3,10 +3,19 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			recaptchaSiteKey: string;
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
+	}
+	
+	interface Window {
+		grecaptcha: {
+			ready: (callback: () => void) => void;
+			execute: (siteKey: string, options: { action: string }) => Promise<string>;
+		};
 	}
 }
 

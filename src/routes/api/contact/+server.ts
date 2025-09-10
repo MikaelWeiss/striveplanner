@@ -1,9 +1,9 @@
 import { json } from '@sveltejs/kit';
-import { VITE_RECAPTCHA_SECRET_KEY, VITE_RESEND_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { Resend } from 'resend';
 
 async function verifyRecaptcha(token: string): Promise<boolean> {
-  const secretKey = VITE_RECAPTCHA_SECRET_KEY;
+  const secretKey = env.VITE_RECAPTCHA_SECRET_KEY;
   
   if (!secretKey) {
     console.error('reCAPTCHA secret key not configured');
@@ -58,11 +58,11 @@ export async function POST({ request }) {
     }
     
     // Send email using Resend
-    const resend = new Resend(VITE_RESEND_API_KEY);
+    const resend = new Resend(env.VITE_RESEND_API_KEY);
     const { data: emailData, error } = await resend.emails.send({
       from: 'Strive Planner Contact <onboarding@resend.dev>',
       to: 'support@striveplanner.org',
-      reply_to: email as string,
+      replyTo: email as string,
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
