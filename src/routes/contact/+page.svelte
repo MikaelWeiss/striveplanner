@@ -49,52 +49,52 @@
   <div class="grid md:grid-cols-2 gap-12">
     <!-- Contact Form -->
     <div class="bg-white backdrop-blur-lg rounded-lg p-8">
-      <form on:submit|preventDefault={submitForm} class="text-gray-300" id="contact-form">
+      <form on:submit|preventDefault={submitForm} class="text-gray-800" id="contact-form">
         <div class="mb-4">
-          <label for="name" class="block text-sm font-medium text-white mb-2">Name *</label>
+          <label for="name" class="block text-sm font-medium text-gray-800 mb-2">Name *</label>
           <input 
             type="text" 
             id="name" 
             name="name" 
             bind:value={name}
             required 
-            class="w-full px-3 py-2 bg-white/5 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#40e0d0]"
+            class="w-full px-3 py-2 bg-gray-50 text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#40e0d0]"
           />
         </div>
         
         <div class="mb-4">
-          <label for="email" class="block text-sm font-medium text-white mb-2">Email *</label>
+          <label for="email" class="block text-sm font-medium text-gray-800 mb-2">Email *</label>
           <input 
             type="email" 
             id="email" 
             name="email" 
             bind:value={email}
             required 
-            class="w-full px-3 py-2 bg-white/5 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#40e0d0]"
+            class="w-full px-3 py-2 bg-gray-50 text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#40e0d0]"
           />
         </div>
         
         <div class="mb-4">
-          <label for="subject" class="block text-sm font-medium text-white mb-2">Subject *</label>
+          <label for="subject" class="block text-sm font-medium text-gray-800 mb-2">Subject *</label>
           <input 
             type="text" 
             id="subject" 
             name="subject" 
             bind:value={subject}
             required 
-            class="w-full px-3 py-2 bg-white/5 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#40e0d0]"
+            class="w-full px-3 py-2 bg-gray-50 text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#40e0d0]"
           />
         </div>
         
         <div class="mb-6">
-          <label for="message" class="block text-sm font-medium text-white mb-2">Message *</label>
+          <label for="message" class="block text-sm font-medium text-gray-800 mb-2">Message *</label>
           <textarea 
             id="message" 
             name="message" 
             bind:value={message}
             required 
             rows="5"
-            class="w-full px-3 py-2 bg-white/5 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#40e0d0]"
+            class="w-full px-3 py-2 bg-gray-50 text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#40e0d0]"
           ></textarea>
         </div>
         
