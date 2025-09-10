@@ -11,13 +11,25 @@
     formMessage = null;
 
     try {
-      // Here you would implement reCAPTCHA and form submission
-      // For now, just show a success message
+      // Generate reCAPTCHA token
+      const recaptchaToken = await new Promise<string>((resolve, reject) => {
+        if (typeof grecaptcha !== 'undefined') {
+          grecaptcha.ready(() => {
+            grecaptcha.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY, { action: 'submit' })
+              .then(resolve)
+              .catch(reject);
+          });
+        } else {
+          reject(new Error('reCAPTCHA not loaded'));
+        }
+      });
+
       const formData = new FormData();
       formData.append('name', name);
       formData.append('email', email);
       formData.append('subject', subject);
       formData.append('message', message);
+      formData.append('g-recaptcha-response', recaptchaToken);
       
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -25,7 +37,8 @@
       });
       
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send message');
       }
       
       const result = await response.json();
@@ -37,7 +50,7 @@
       subject = '';
       message = '';
     } catch (error) {
-      formMessage = { type: 'error', text: 'Sorry, there was an error sending your message. Please try again.' };
+      formMessage = { type: 'error', text: error instanceof Error ? error.message : 'Sorry, there was an error sending your message. Please try again.' };
     } finally {
       isSubmitting = false;
     }

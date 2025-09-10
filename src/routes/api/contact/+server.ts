@@ -3,6 +3,26 @@ import { Resend } from 'resend';
 
 const resend = new Resend(import.meta.env.VITE_RESEND_API_KEY);
 
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  const secretKey = import.meta.env.VITE_RECAPTCHA_SECRET_KEY;
+  
+  if (!secretKey) {
+    console.error('reCAPTCHA secret key not configured');
+    return false;
+  }
+  
+  const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `secret=${secretKey}&response=${token}`,
+  });
+  
+  const result = await response.json();
+  return result.success && result.score > 0.5;
+}
+
 export async function POST({ request }) {
   try {
     const data = await request.formData();
@@ -12,11 +32,28 @@ export async function POST({ request }) {
     const email = data.get('email');
     const subject = data.get('subject');
     const message = data.get('message');
+    const recaptchaToken = data.get('g-recaptcha-response');
     
     // Basic validation
     if (!name || !email || !subject || !message) {
       return json(
         { error: 'All fields are required' },
+        { status: 400 }
+      );
+    }
+    
+    // reCAPTCHA validation
+    if (!recaptchaToken) {
+      return json(
+        { error: 'reCAPTCHA verification failed' },
+        { status: 400 }
+      );
+    }
+    
+    const isHuman = await verifyRecaptcha(recaptchaToken as string);
+    if (!isHuman) {
+      return json(
+        { error: 'reCAPTCHA verification failed' },
         { status: 400 }
       );
     }
