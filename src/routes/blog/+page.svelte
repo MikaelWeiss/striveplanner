@@ -1,36 +1,23 @@
 <script lang="ts">
-  // Sample blog posts data - in a real app this would come from a CMS or markdown files
-  const blogPosts = [
-    {
-      slug: 'getting-started-with-intentional-living',
-      title: 'Getting Started with Intentional Living',
-      excerpt: 'Learn how to live with more purpose and intention in your daily life.',
-      publishedAt: new Date('2024-01-15'),
-      tags: ['productivity', 'intentionality', 'lifestyle']
-    },
-    {
-      slug: 'the-power-of-daily-reflection',
-      title: 'The Power of Daily Reflection',
-      excerpt: 'Discover how daily reflection can transform your productivity and well-being.',
-      publishedAt: new Date('2024-01-10'),
-      tags: ['reflection', 'productivity', 'mindfulness']
-    },
-    {
-      slug: 'setting-goals-that-actually-matter',
-      title: 'Setting Goals That Actually Matter',
-      excerpt: 'A guide to setting meaningful goals that align with your values and vision.',
-      publishedAt: new Date('2024-01-05'),
-      tags: ['goals', 'planning', 'productivity']
-    }
-  ];
+	import { getAllPosts } from '$lib/blog/static-posts';
+	import type { Post } from '$lib/blog/types';
+	import { onMount } from 'svelte';
 
-  function formatDate(date: Date): string {
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  }
+	let posts: Post[] = [];
+	let loading = true;
+
+	onMount(async () => {
+		posts = await getAllPosts();
+		loading = false;
+	});
+
+	function formatDate(dateString: string): string {
+		return new Date(dateString).toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'long',
+			'day': 'numeric'
+		});
+	}
 </script>
 
 <svelte:head>
@@ -47,57 +34,69 @@
     </p>
   </div>
   
+  <!-- Loading State -->
+  {#if loading}
+    <div class="text-center py-16">
+      <div class="text-gray-400 mb-4">
+        <svg class="mx-auto h-12 w-12 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+      </div>
+      <h3 class="text-lg font-medium text-white mb-2">Loading posts...</h3>
+    </div>
   <!-- Blog Posts Grid -->
-  <div class="space-y-12">
-    {#each blogPosts as post (post.slug)}
-      <a href="/blog/{post.slug}" class="block group">
-        <article class="bg-white/5 backdrop-blur-lg rounded-lg p-8 hover:bg-white/10 transition-all duration-200 cursor-pointer group-hover:shadow-lg">
-          <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-            <h2 class="text-2xl font-medium text-white mb-2 md:mb-0">
-              {post.title}
-            </h2>
-            <time class="text-sm text-gray-400 md:ml-4 md:flex-shrink-0">
-              {formatDate(post.publishedAt)}
-            </time>
-          </div>
-
-          <p class="text-gray-300 mb-4 leading-relaxed">
-            {post.excerpt}
-          </p>
-
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <div class="flex flex-wrap gap-2 mb-4 sm:mb-0">
-              {#each post.tags as tag}
-                <span class="px-3 py-1 text-xs bg-[#40e0d0]/20 text-[#40e0d0] rounded-full">
-                  {tag}
-                </span>
-              {/each}
+  {:else if posts.length > 0}
+    <div class="space-y-12">
+      {#each posts as post (post.slug)}
+        <a href="/blog/{post.slug}" class="block group">
+          <article class="bg-white/5 backdrop-blur-lg rounded-lg p-8 hover:bg-white/10 transition-all duration-200 cursor-pointer group-hover:shadow-lg">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+              <h2 class="text-2xl font-medium text-white mb-2 md:mb-0">
+                {post.title}
+              </h2>
+              <time class="text-sm text-gray-400 md:ml-4 md:flex-shrink-0">
+                {formatDate(post.published)}
+              </time>
             </div>
 
-            <div class="inline-flex items-center text-[#40e0d0] transition-colors font-medium">
-              Read More
-              <svg
-                class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+            {#if post.excerpt}
+              <p class="text-gray-300 mb-4 leading-relaxed">
+                {post.excerpt}
+              </p>
+            {/if}
+
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <div class="flex flex-wrap gap-2 mb-4 sm:mb-0">
+                {#each post.tags as tag}
+                  <span class="px-3 py-1 text-xs bg-[#40e0d0]/20 text-[#40e0d0] rounded-full">
+                    {tag}
+                  </span>
+                {/each}
+              </div>
+
+              <div class="inline-flex items-center text-[#40e0d0] transition-colors font-medium">
+                Read More
+                <svg
+                  class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
             </div>
-          </div>
-        </article>
-      </a>
-    {/each}
-  </div>
-  
+          </article>
+        </a>
+      {/each}
+    </div>
   <!-- Empty State (if no posts) -->
-  {#if blogPosts.length === 0}
+  {:else}
     <div class="text-center py-16">
       <div class="text-gray-400 mb-4">
         <svg class="mx-auto h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
