@@ -1,8 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { Resend } from 'resend';
 
-const resend = new Resend(import.meta.env.VITE_RESEND_API_KEY);
-
 async function verifyRecaptcha(token: string): Promise<boolean> {
   const secretKey = import.meta.env.VITE_RECAPTCHA_SECRET_KEY;
   
@@ -59,6 +57,7 @@ export async function POST({ request }) {
     }
     
     // Send email using Resend
+    const resend = new Resend(import.meta.env.VITE_RESEND_API_KEY);
     const { data: emailData, error } = await resend.emails.send({
       from: 'Strive Planner Contact <onboarding@resend.dev>',
       to: 'support@striveplanner.org',
