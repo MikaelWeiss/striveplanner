@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { error } from '@sveltejs/kit';
 	import type { Post } from '$lib/blog/types';
+	import NewsletterSignup from '$lib/NewsletterSignup.svelte';
 
 	export let data: {
 		post: Post;
@@ -78,6 +79,11 @@
 				<p class="text-gray-400">Loading post...</p>
 			</div>
 		{/if}
+	</div>
+
+	<!-- Newsletter Signup -->
+	<div class="mt-16">
+		<NewsletterSignup />
 	</div>
 
 	<!-- Back to Blog -->
