@@ -1,7 +1,18 @@
 import type { Handle } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
+import { createSubscribersTable } from '$lib/db';
 
 export const handle: Handle = async ({ event, resolve }) => {
+	// Initialize database table on startup (only if DATABASE_URL is available)
+	if (process.env.DATABASE_URL) {
+		try {
+			await createSubscribersTable();
+		} catch (error) {
+			console.error('Failed to initialize database table:', error);
+			// Don't block the app startup if database fails
+		}
+	}
+	
 	// Make environment variables available to the client
 	event.locals.recaptchaSiteKey = env.VITE_RECAPTCHA_SITE_KEY;
 	
