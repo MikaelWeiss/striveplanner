@@ -7,17 +7,20 @@
 		post: Post;
 	};
 
-	// Import the markdown component based on the slug
+	// Import the markdown component dynamically
 	let component: any;
 	
 	$: {
-		if (data.post.slug === 'where-there-is-no-vision-the-people-perish') {
-			import('$lib/blog-posts/where-there-is-no-vision-the-people-perish.md').then(mod => {
+		if (data.post) {
+			import(`$lib/blog-posts/${data.post.slug}.md`).then(mod => {
 				component = mod.default;
-			});
-		} else if (data.post.slug === 'why-did-i-build-strive') {
-			import('$lib/blog-posts/why-did-i-build-strive.md').then(mod => {
-				component = mod.default;
+			}).catch(() => {
+				// Fallback: try to find the component using utils
+				import('$lib/blog/utils').then(utils => {
+					utils.getPostComponent(data.post.slug).then(comp => {
+						component = comp;
+					});
+				});
 			});
 		}
 	}

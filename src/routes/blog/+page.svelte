@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAllPosts } from '$lib/blog/static-posts';
+	import { getAllPosts } from '$lib/blog/utils';
 	import type { Post } from '$lib/blog/types';
 	import { onMount } from 'svelte';
 	import NewsletterSignup from '$lib/NewsletterSignup.svelte';
