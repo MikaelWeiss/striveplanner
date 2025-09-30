@@ -51,16 +51,16 @@ export async function getPost(slug: string): Promise<Post | null> {
 export async function getPostComponent(slug: string): Promise<any | null> {
 	const normalizedSlug = slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 	const modulePath = slugToPathMap[normalizedSlug];
-	
+
 	if (!modulePath) {
 		return null;
 	}
-	
+
 	try {
 		// Import the markdown component using the full path
 		const filename = modulePath.split('/').pop() || '';
 		// @ts-ignore
-		const module = await import(`./blog-posts/${filename}`);
+		const module = await import(/* @vite-ignore */ `./blog-posts/${filename}`);
 		return module.default;
 	} catch {
 		return null;
