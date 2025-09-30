@@ -7,7 +7,6 @@ tags:
   - meaning
 excerpt: Most people can tell you *what* they do, but few can tell you *why* they do it. Understanding the purpose behind your daily activities is the key to meaningful progress.
 ---
-# Start With Why
 Most people can tell you *what* they do, but few can tell you *why* they do it. Can you?
 
 Almost without fail, when I explain Strive Planner to people, they come back with the question, "Do you know there are a lot of other task management and productivity apps out there?" It always makes me laugh a little because you'd think if I'd found a productivity app that I liked as much as Strive, I never would've built it.
