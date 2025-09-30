@@ -43,7 +43,7 @@ I imagine that I'm playing with my nephew and we're playing tag. He's 12 at this
 I mean, I don't know about you, but I'm pretty competitive. That would definitely motivate me to exercise 😂
 
 ### Strive
-![image of Strive Planner app](/images/blog1image1.png)
+![Strive Planner app](/images/blog1image1.png)
 I think Strive is a great place to put these visions. Then whenever you start working on it, you can go look at what you wrote out.
 ### In conclusion
 When you spend a little extra time to understand _**why**_ instead of just _what_ you want to accomplish, then you'll go further then you ever thought you could.
