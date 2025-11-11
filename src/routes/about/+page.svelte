@@ -98,7 +98,7 @@
           Ready to start your journey?
         </h2>
         <div class="mt-8">
-          <a href="https://apps.apple.com/us/app/strive-planner/id6472100413" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] hover:opacity-90">
+          <a href="https://apps.apple.com/app/apple-store/id6472100413?pt=127673313&ct=StrivePlannerWebsite&mt=8" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] hover:opacity-90">
             Download Strive Planner
           </a>
         </div>

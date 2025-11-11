@@ -9,7 +9,7 @@
       In a world full of distractions, Strive helps you live with intention and focus on what truly matters.
     </p>
     <div class="flex justify-center gap-6">
-      <a href="https://apps.apple.com/us/app/strive-planner/id6472100413" class="px-8 py-3 text-gray-900 rounded-md text-sm font-medium bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] hover:opacity-90">
+      <a href="https://apps.apple.com/app/apple-store/id6472100413?pt=127673313&ct=StrivePlannerWebsite&mt=8" class="px-8 py-3 text-gray-900 rounded-md text-sm font-medium bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] hover:opacity-90">
         Download
       </a>
       <a href="#learn-more" class="px-8 py-3 text-sm font-normal rounded-md text-white border border-white/20 hover:bg-white/10">
@@ -115,7 +115,7 @@
   <section class="py-24 bg-gradient-to-r from-[#40e0d0] to-[#3bd89d]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-2xl font-normal mb-8 text-gray-900">Ready to live with purpose?</h2>
-      <a href="https://apps.apple.com/us/app/strive-planner/id6472100413" class="inline-block px-8 py-3 text-sm font-normal rounded-md bg-gray-900 text-white hover:bg-gray-800">
+      <a href="https://apps.apple.com/app/apple-store/id6472100413?pt=127673313&ct=StrivePlannerWebsite&mt=8" class="inline-block px-8 py-3 text-sm font-normal rounded-md bg-gray-900 text-white hover:bg-gray-800">
         Download
       </a>
     </div>

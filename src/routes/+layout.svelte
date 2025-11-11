@@ -25,7 +25,7 @@
            <a href="/blog" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm">Blog</a>
            <a href="/contact" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm">Contact</a>
            <a href="/support" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm">Support</a>
-           <a href="https://apps.apple.com/us/app/strive-planner/id6472100413" class="bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 px-4 py-2 rounded-md text-sm font-medium hover:opacity-90">
+           <a href="https://apps.apple.com/app/apple-store/id6472100413?pt=127673313&ct=StrivePlannerWebsite&mt=8" class="bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 px-4 py-2 rounded-md text-sm font-medium hover:opacity-90">
              Download
            </a>
          </div>
@@ -48,7 +48,7 @@
        <a href="/blog" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base">Blog</a>
        <a href="/contact" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base">Contact</a>
        <a href="/support" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base">Support</a>
-       <a href="https://apps.apple.com/us/app/strive-planner/id6472100413" class="bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 block px-3 py-2 rounded-md text-base font-medium hover:opacity-90">
+       <a href="https://apps.apple.com/app/apple-store/id6472100413?pt=127673313&ct=StrivePlannerWebsite&mt=8" class="bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 block px-3 py-2 rounded-md text-base font-medium hover:opacity-90">
          Download
        </a>
      </div>
