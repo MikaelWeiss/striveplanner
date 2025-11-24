@@ -8,23 +8,7 @@ defmodule StrivePlannerWeb.Router do
     plug :put_root_layout, html: {StrivePlannerWeb.Layouts, :root}
     plug :protect_from_forgery
 
-    plug :put_secure_browser_headers, %{
-      "content-security-policy" =>
-        "default-src 'self'; " <>
-          "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://static.cloudflareinsights.com; " <>
-          "style-src 'self' 'unsafe-inline'; " <>
-          "connect-src 'self' ws: wss: https://www.google.com https://cloudflareinsights.com https://static.cloudflareinsights.com; " <>
-          "img-src 'self' data:; " <>
-          "font-src 'self'; " <>
-          "frame-src 'self' https://www.google.com https://www.gstatic.com; " <>
-          "frame-ancestors 'none'; " <>
-          "base-uri 'self'; " <>
-          "form-action 'self'",
-      "x-frame-options" => "DENY",
-      "x-content-type-options" => "nosniff",
-      "referrer-policy" => "strict-origin-when-cross-origin",
-      "permissions-policy" => "geolocation=(), microphone=(), camera=()"
-    }
+    plug :put_secure_browser_headers
   end
 
   pipeline :api do
