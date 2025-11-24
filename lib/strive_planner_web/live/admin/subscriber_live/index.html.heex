@@ -1,0 +1,167 @@
+<div class="min-h-screen bg-[#0f1a1f]">
+  <!-- Navigation Bar -->
+  <div class="bg-[#1a2b33] border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <.link
+            navigate={~p"/admin"}
+            class="px-6 py-2 rounded-full text-white bg-white/10 hover:bg-white/20 font-medium transition-all"
+          >
+            Blog Posts
+          </.link>
+          <.link
+            navigate={~p"/admin/subscribers"}
+            class="px-6 py-2 rounded-full text-gray-900 bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] font-medium"
+          >
+            Subscribers
+          </.link>
+        </div>
+        <a
+          href="/admin/logout"
+          class="text-sm text-gray-300 hover:text-white transition-colors"
+        >
+          Logout
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-6 py-8">
+    <div class="mb-8 flex items-center justify-between">
+      <h1 class="text-3xl font-normal text-white">Subscribers</h1>
+      <.link patch={~p"/admin/subscribers/new"}>
+        <button class="px-6 py-2.5 bg-gradient-to-r from-[#40e0d0] to-[#3bd89d] text-gray-900 rounded-md hover:opacity-90 font-medium transition-all">
+          New Subscriber
+        </button>
+      </.link>
+    </div>
+    <!-- Subscribers Table -->
+    <div class="bg-white/5 backdrop-blur-lg rounded-lg overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-white/10">
+          <thead class="bg-white/5">
+            <tr>
+              <th
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              >
+                Email
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              >
+                Verified
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              >
+                Status
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              >
+                Emails Received
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              >
+                Joined
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-4 text-right text-xs font-medium text-gray-300 uppercase tracking-wider"
+              >
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            id="subscribers"
+            phx-update="stream"
+            class="bg-white/5 divide-y divide-white/10"
+          >
+            <tr
+              :for={{id, subscriber} <- @streams.subscribers}
+              id={id}
+              class="hover:bg-white/5 transition-colors"
+            >
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium text-white">{subscriber.email}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class={[
+                  "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium",
+                  (subscriber.verified && "bg-green-500/20 text-green-400") ||
+                    "bg-gray-500/20 text-gray-400"
+                ]}>
+                  {if subscriber.verified, do: "Verified", else: "Unverified"}
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class={[
+                  "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium",
+                  (subscriber.subscription_status == "subscribed" &&
+                     "bg-[#40e0d0]/20 text-[#40e0d0]") || "bg-red-500/20 text-red-400"
+                ]}>
+                  {String.capitalize(subscriber.subscription_status)}
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-white font-semibold">
+                  {subscriber.emails_received_count}
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-400">
+                  {Calendar.strftime(subscriber.inserted_at, "%b %d, %Y")}
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <div class="flex items-center justify-end gap-3">
+                  <.link
+                    patch={~p"/admin/subscribers/#{subscriber}/edit"}
+                    class="text-[#40e0d0] hover:text-[#3bd89d] transition-colors"
+                  >
+                    Edit
+                  </.link>
+                  <.link
+                    phx-click={JS.push("delete", value: %{id: subscriber.id}) |> hide("##{id}")}
+                    data-confirm="Are you sure?"
+                    class="text-red-400 hover:text-red-300 transition-colors"
+                  >
+                    Delete
+                  </.link>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  :if={@live_action in [:new, :edit]}
+  class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+  phx-click={JS.patch(~p"/admin/subscribers")}
+>
+  <div
+    class="bg-[#1a2b33] rounded-xl shadow-2xl max-w-md w-full border border-white/10"
+    phx-click="cancel_modal_close"
+  >
+    <.live_component
+      module={StrivePlannerWeb.Admin.SubscriberLive.FormComponent}
+      id={@subscriber.id || :new}
+      title={@page_title}
+      action={@live_action}
+      subscriber={@subscriber}
+      patch={~p"/admin/subscribers"}
+    />
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<Layouts.app flash={@flash}>
+  <article class="mx-auto max-w-4xl px-4 py-24 sm:px-6 lg:px-8">
+    <!-- Back to Blog -->
+    <div class="mb-8">
+      <a
+        href="/blog"
+        class="inline-flex items-center text-[#40e0d0] transition-colors hover:text-[#3bd89d]"
+      >
+        <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+        Back to Blog
+      </a>
+    </div>
+    <!-- Header -->
+    <header class="mb-12">
+      <h1 class="mb-4 text-4xl font-normal text-white">{@post.title}</h1>
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <time class="text-gray-400">
+          <%= if @post.published_at do %>
+            {Calendar.strftime(@post.published_at, "%B %d, %Y")}
+          <% else %>
+            <span class="italic">Draft</span>
+          <% end %>
+        </time>
+        <div class="flex flex-wrap gap-2">
+          <%= for tag <- @post.tags do %>
+            <span class="rounded-full bg-[#40e0d0]/20 px-3 py-1 text-xs text-[#40e0d0]">
+              {tag}
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </header>
+    <!-- Content -->
+    <div class="prose prose-lg max-w-none prose-invert">
+      {Phoenix.HTML.raw(@html_content)}
+    </div>
+    <!-- Newsletter Signup -->
+    <div class="mt-16">
+      <StrivePlannerWeb.NewsletterComponent.newsletter_signup />
+    </div>
+    <!-- Back to Blog -->
+    <div class="mt-16 border-t border-gray-800 pt-8">
+      <a
+        href="/blog"
+        class="inline-flex items-center text-[#40e0d0] transition-colors hover:text-[#3bd89d]"
+      >
+        <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+        Back to Blog
+      </a>
+    </div>
+  </article>
+</Layouts.app>

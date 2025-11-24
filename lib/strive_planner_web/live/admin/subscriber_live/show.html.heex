@@ -1,0 +1,50 @@
+<.header>
+  Show Subscriber
+  <:subtitle>Email: {@subscriber.email}</:subtitle>
+  <:actions>
+    <.link patch={~p"/admin/subscribers/#{@subscriber}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit subscriber</.button>
+    </.link>
+    <.link navigate={~p"/admin/subscribers"}>
+      <.button>Back to subscribers</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Email">{@subscriber.email}</:item>
+  <:item title="Verified">
+    <span class={[
+      "px-2 py-1 rounded text-sm",
+      (@subscriber.verified && "bg-green-100 text-green-800") || "bg-gray-100 text-gray-800"
+    ]}>
+      {if @subscriber.verified, do: "Verified", else: "Unverified"}
+    </span>
+  </:item>
+  <:item title="Subscription Status">
+    <span class={[
+      "px-2 py-1 rounded text-sm",
+      (@subscriber.subscription_status == "subscribed" && "bg-blue-100 text-blue-800") ||
+        "bg-gray-100 text-gray-800"
+    ]}>
+      {String.capitalize(@subscriber.subscription_status)}
+    </span>
+  </:item>
+  <:item title="Created">{@subscriber.inserted_at}</:item>
+</.list>
+
+<div
+  :if={@live_action == :edit}
+  class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50"
+>
+  <div class="bg-white p-8 rounded-lg max-w-2xl w-full">
+    <.live_component
+      module={StrivePlannerWeb.Admin.SubscriberLive.FormComponent}
+      id={@subscriber.id}
+      title={@page_title}
+      action={@live_action}
+      subscriber={@subscriber}
+      patch={~p"/admin/subscribers/#{@subscriber}"}
+    />
+  </div>
+</div>
