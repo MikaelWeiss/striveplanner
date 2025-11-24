@@ -13,7 +13,7 @@ defmodule StrivePlannerWeb.Router do
         "default-src 'self'; " <>
           "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://static.cloudflareinsights.com; " <>
           "style-src 'self' 'unsafe-inline'; " <>
-          "connect-src 'self' ws: wss: https://www.google.com https://cloudflareinsights.com; " <>
+          "connect-src 'self' ws: wss: https://www.google.com https://cloudflareinsights.com https://static.cloudflareinsights.com; " <>
           "img-src 'self' data:; " <>
           "font-src 'self'; " <>
           "frame-src 'self' https://www.google.com https://www.gstatic.com; " <>

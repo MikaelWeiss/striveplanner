@@ -38,12 +38,10 @@ defmodule StrivePlannerWeb.Admin.LoginLive do
           <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8">
             <.form for={@form} id="login-form" phx-submit="send_magic_link" class="space-y-6">
               <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2">
-                  Email Address
-                </label>
                 <.input
                   field={@form[:email]}
                   type="email"
+                  label="Email Address"
                   placeholder="admin@example.com"
                   required
                   class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#40e0d0] focus:border-transparent transition-all"
